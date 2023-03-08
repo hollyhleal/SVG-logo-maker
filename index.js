@@ -1,6 +1,7 @@
 // Dependencies
 const inquirer = require("inquirer");
 
+// Node promises module
 const { writeFile } = require("fs").promises;
 
 const promptUser = () => {
@@ -38,7 +39,7 @@ const generateSVG = ({ characters, textColor, shape, shapeColor }) => ``;
 
 const init = () => {
   promptUser()
-    .then((answers) => writeFile("logo.svg", generateSVG(answers)))
+    .then((answers) => writeFile("./examples/logo.svg", generateSVG(answers)))
     .then(() => console.log("Generated logo.svg"))
     .catch((err) => console.error(err));
 };
