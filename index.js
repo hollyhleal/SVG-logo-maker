@@ -1,11 +1,10 @@
 // Dependencies
 const inquirer = require("inquirer");
-const fs = require("fs"); //part of node installations; use to writeFile
 
-const generateSVG = ({}) => ``;
+const { writeFile } = require("fs").promises;
 
-inquirer
-  .prompt([
+const promptUser = () => {
+  return inquirer.prompt([
     {
       type: "input",
       message: "Enter up to three characters for your logo.",
@@ -27,13 +26,21 @@ inquirer
       type: "list",
       message: "What color would you like your logo to be?",
       name: "shapeColor",
-      choices: [{ title: "blue", value: "#0000ff" }],
+      choices: [
+        { title: "blue", value: "#0000ff" },
+        { title: "red", value: "#FF0000" },
+      ],
     },
-  ])
-  .then((answers) => {
-    const svgContent = generateSVG(answers);
+  ]);
+};
 
-    fs.writeFile("logo.svg", svgContent, (err) =>
-      err ? console.log(err) : console.log("Generated logo.svg")
-    );
-  });
+const generateSVG = ({ characters, textColor, shape, shapeColor }) => ``;
+
+const init = () => {
+  promptUser()
+    .then((answers) => writeFile("logo.svg", generateSVG(answers)))
+    .then(() => console.log("Generated logo.svg"))
+    .catch((err) => console.error(err));
+};
+
+init();
