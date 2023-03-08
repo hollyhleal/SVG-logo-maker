@@ -47,7 +47,7 @@ inquirer
     const svg = new SVG();
     // with svg, call setText and setShape method
     svg.setText(characters, textColor);
-    svg.setShape(shapeType);
+    svg.setShape(shape);
     console.log(svg);
     return writeFile("./examples/logo.svg", svg.render());
   });
