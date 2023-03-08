@@ -35,7 +35,8 @@ const promptUser = () => {
   ]);
 };
 
-const generateSVG = ({ characters, textColor, shape, shapeColor }) => ``;
+const generateSVG = ({ characters, textColor, shape, shapeColor }) =>
+  `<svg width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg"><${shape} fill="${shapeColor}"/><text><tspan fill="${textColor}">${characters}</tspan></text></svg>`;
 
 const init = () => {
   promptUser()
