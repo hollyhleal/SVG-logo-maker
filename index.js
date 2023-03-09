@@ -48,18 +48,10 @@ inquirer
     // with svg, call setText and setShape method
     svg.setText(characters, textColor);
     svg.setShape(shape);
-    console.log(svg);
-    return writeFile("./examples/logo.svg", svg.render());
+    // console.log(svg);
+    return writeFile("./examples/logo.svg", svg.render())
+      .then(() => {
+        console.log("Generated logo.svg");
+      })
+      .catch((err) => console.log("This is an error", err));
   });
-
-// const generateSVG = ({ characters, textColor, shape, shapeColor }) =>
-//   `<svg width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">${shape}<text><tspan fill="${textColor}">${characters}</tspan></text></svg>`;
-
-// const init = () => {
-//   promptUser()
-//     .then(answers) => writeFile("./examples/logo.svg")
-//     .then(() => console.log("Generated logo.svg"))
-//     .catch((err) => console.error(err));
-// };
-
-// init();
